@@ -1,0 +1,47 @@
+ private void BtnOKClick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                int x= Convert.ToInt32(ListBoxData.Items[0]);
+                int n= Convert.ToInt32(ListBoxData.Items[1]);
+                double x1 = 1, n1 = 1, rez = 1;
+                for (int i = 1; i <= n; ++i)
+                {
+                    n1 *= (float)i;
+                    x1 *= x;
+                    rez += x1 / n1;
+                }
+
+
+                TextBlockAnswer.Text = $"Ответ:{rez}";
+                
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Введены не корректные данные");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void BtnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            if ((String.IsNullOrEmpty(TbNumber.Text)))
+            {
+                return;
+            }
+            try
+            {
+                int xa = Convert.ToInt32(TbNumber.Text);
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Введены не корректные данные");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            ListBoxData.Items.Add(TbNumber.Text);
+        }
